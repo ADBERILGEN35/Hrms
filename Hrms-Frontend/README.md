@@ -4,5 +4,4 @@ Human Resources Management System projesi frontend kodları repositorysidir.
 
 
 ## UML Diyagram
-
-https://www.hizliresim.com/r9s3g5q
+![alt text](https://www.hizliresim.com/r9s3g5q)
