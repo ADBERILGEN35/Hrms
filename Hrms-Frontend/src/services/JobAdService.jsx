@@ -1,10 +1,24 @@
-
 import axios from "axios";
 
 export default class JobAdService {
     getActiveJobAds() {
-        return axios.get("http://localhost:8080/api/jobadvertisement/getActiveJobAdvertisement");
+        return axios.get("http://localhost:8080/api/jobAd/getActiveAds");
     }
+
+
+    getByJobAdId(id) {
+        return axios.get("http://localhost:8080/api/jobAd/getByJobAdId?id=" + id)
+    }
+
+    getActiveAdsByCompanyId(id) {
+        return axios.get("http://localhost:8080/api/jobAd/getActiveAndCompanyId?companyId=" + id)
+    }
+
+    add(values) {
+        return axios.post("http://localhost:8080/api/jobAd/create", values)
+    }
+
+
 
 
 }

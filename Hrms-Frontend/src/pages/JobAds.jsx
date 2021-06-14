@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Icon, Menu, Table, Button } from "semantic-ui-react";
 import JobAdService from "../services/JobAdService";
 
@@ -12,13 +13,14 @@ export default function JobAds() {
 
     return (
         <div>
-            <Table celled>
+            <Table celled color={"black"}>
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell>Şirket Adı</Table.HeaderCell>
                         <Table.HeaderCell>Şehir</Table.HeaderCell>
                         <Table.HeaderCell>Pozisyon</Table.HeaderCell>
-                        <Table.HeaderCell>Son Tarih</Table.HeaderCell>
+                        <Table.HeaderCell>Çalışma Yeri</Table.HeaderCell>
+                        <Table.HeaderCell>Çalışma Şekli</Table.HeaderCell>
                         <Table.HeaderCell>Detaylar</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
@@ -28,15 +30,15 @@ export default function JobAds() {
                         jobAds.map(jobAd => (
                             <Table.Row key={jobAd.id}>
                                 <Table.Cell>{jobAd.employer.companyName}</Table.Cell>
-                                <Table.Cell>{jobAd.city.cityName}</Table.Cell>
+                                <Table.Cell>{jobAd.city.name}</Table.Cell>
                                 <Table.Cell>{jobAd.jobPosition.name}</Table.Cell>
-                                <Table.Cell>{jobAd.deadline}</Table.Cell>
+                                <Table.Cell>{jobAd.workPlace.name}</Table.Cell>
+                                <Table.Cell>{jobAd.workTime.name}</Table.Cell>
                                 <Table.Cell>
-                                    <Button
+                                    <Button as={Link} to={`/jobads/${jobAd.id}`}
                                         content="Detayları Gör"
                                         icon="right arrow"
                                         labelPosition="right"
-                                        onClick
                                     />
                                 </Table.Cell>
                             </Table.Row>
@@ -45,7 +47,7 @@ export default function JobAds() {
 
                 <Table.Footer>
                     <Table.Row>
-                        <Table.HeaderCell colSpan="5">
+                        <Table.HeaderCell colSpan="6">
                             <Menu floated="right" pagination>
                                 <Menu.Item as="a" icon>
                                     <Icon name="chevron left" />

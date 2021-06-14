@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Button, Card } from "semantic-ui-react";
 import CandidateService from "../services/CandidateService";
 
@@ -17,7 +18,7 @@ export default function Candidates() {
             <Card.Group>
                 {
                     candidates.map(candidate => (
-                        <Card fluid>
+                        <Card key={candidate.id} fluid>
                             <Card.Content>
                                 <Card.Header>{candidate.firstName + " " + candidate.lastName}</Card.Header>
                                 <Card.Meta>{candidate.dateOfBirth}</Card.Meta>
@@ -27,9 +28,9 @@ export default function Candidates() {
                             </Card.Content>
                             <Card.Content extra>
                                 <div className="ui two buttons">
-                                    <Button basic color="green">
+                                    <Button basic color="green" as={Link} to={`/cvs/${candidate.id}`}>
                                         Cvsini Gör
-                    </Button>
+                                    </Button>
                                 </div>
                             </Card.Content>
                         </Card>

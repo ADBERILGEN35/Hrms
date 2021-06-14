@@ -1,23 +1,27 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Container, Button, Menu, Icon } from 'semantic-ui-react';
 import "../App.css";
 
 export default function Navi() {
     return (
         <div>
-            <Menu size="large" inverted fixed="top">
+            <Menu size="large" inverted stackable>
                 <Container>
-                    <Menu.Item name="Ana Sayfa">
+                    <Menu.Item name="Ana Sayfa" as={Link} to={"/"}>
                         <Icon name="home" />Ana Sayfa
-          </Menu.Item>
-                    <Menu.Item name="İş ilanları" />
-                    <Menu.Item name="Cvler" />
+                    </Menu.Item>
+                    <Menu.Item name="İş ilanları" as={Link} to={"/jobads"} />
+                    <Menu.Item name="Cvler" as={Link} to={"/cvs"} />
 
-                    <Menu.Menu position="right">
+                    <Menu.Menu position="right" style={{ margin: '0.5em' }}>
+                        <Button primary as={Link} to={"/jobAdCreate"}>
+                            İlan Ekle
+                        </Button>
                         <Button.Group>
-                            <Button>Giriş yap</Button>
+                            <Button as={Link} to={"/login"}>Giriş yap</Button>
                             <Button.Or />
-                            <Button positive>Kaydol</Button>
+                            <Button positive as={Link} to={"/register"}>Kaydol</Button>
                         </Button.Group>
                     </Menu.Menu>
                 </Container>

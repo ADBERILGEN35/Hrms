@@ -1,29 +1,30 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Icon, Menu } from 'semantic-ui-react'
 
 export default function Categories() {
     return (
         <div>
-            <Menu compact icon="labeled" vertical fluid>
-                <Menu.Item name="gamepad">
+            <Menu fluid compact icon="labeled" vertical>
+                <Menu.Item as={Link} to={"/jobads"}>
                     <Icon name="list" />
-          İş ilanları
-        </Menu.Item>
+                    İş ilanları
+                </Menu.Item>
 
-                <Menu.Item name="video camera">
+                <Menu.Item as={Link} to={"/employers"}>
                     <Icon name="factory" />
-          İş verenler
-        </Menu.Item>
+                    İş verenler
+                </Menu.Item>
 
-                <Menu.Item name="video play">
+                <Menu.Item as={Link} to={"/candidates"}>
                     <Icon name="user" />
-          Kullanıcılar
-        </Menu.Item>
+                    Kullanıcılar
+                </Menu.Item>
 
-                <Menu.Item name="video play">
+                <Menu.Item as={Link} to={"/cvs"}>
                     <Icon name="wordpress forms" />
-          Cvler
-        </Menu.Item>
+                    Özgeçmişler
+                </Menu.Item>
             </Menu>
         </div>
     );

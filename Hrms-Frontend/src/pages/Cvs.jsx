@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Header, Image, Table, Button, Icon } from "semantic-ui-react";
 import CvService from "../services/CvService";
 
@@ -12,7 +13,7 @@ export default function Cvs() {
 
     return (
         <div>
-            <Table basic="very" celled collapsing>
+            <Table celled color={"black"}>
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell>İş Arayan</Table.HeaderCell>
@@ -40,34 +41,34 @@ export default function Cvs() {
                             </Table.Cell>
                             <Table.Cell>
                                 {cv.technologies.map((tech) => (
-                                    <p>{tech.name}</p>
+                                    <p key={tech.id}>{tech.name}</p>
                                 ))}
                             </Table.Cell>
 
                             <Table.Cell>
                                 {cv.languages.map((lang) => (
-                                    <p>{lang.name + " Seviye: " + lang.level}</p>
+                                    <p key={lang.id}>{lang.name + " Seviye: " + lang.level}</p>
                                 ))}
                             </Table.Cell>
 
                             <Table.Cell>
-                                <a href={cv.github}>
+                                <a href={cv.github} target={"_blank"} rel="noopener noreferrer">
                                     <Button secondary>
                                         <Icon name="github" /> Github
-                  </Button>
+                                    </Button>
                                 </a>
                             </Table.Cell>
 
                             <Table.Cell>
-                                <a href={cv.linkedin}>
+                                <a href={cv.linkedin} target={"_blank"} rel="noopener noreferrer">
                                     <Button color="linkedin">
                                         <Icon name="linkedin" /> LinkedIn
-                  </Button>
+                                    </Button>
                                 </a>
                             </Table.Cell>
 
                             <Table.Cell>
-                                <Button animated>
+                                <Button animated as={Link} to={`/cvs/${cv.candidate.id}`}>
                                     <Button.Content visible>Detayları Gör</Button.Content>
                                     <Button.Content hidden>
                                         <Icon name="arrow right" />
