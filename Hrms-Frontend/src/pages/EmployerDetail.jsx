@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import EmployerService from "../services/EmployerService";
@@ -21,10 +22,9 @@ export default function EmployerDetail() {
             .getActiveAdsByCompanyId(id)
             .then((result) => setJobAds(result.data.data));
     }, [id]);
-
     return (
         <div>
-            <Table celled>
+            <Table celled color={"black"}>
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell>İş veren</Table.HeaderCell>
@@ -83,7 +83,7 @@ export default function EmployerDetail() {
                 </Table.Body>
             </Table>
 
-            <Card fluid>
+            <Card fluid color={"black"}>
                 <Card.Content header="Bu Şirkete Ait İş İlanları" />
                 <Card.Content>
                     <Table color={"black"}>

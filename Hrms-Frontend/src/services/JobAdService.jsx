@@ -18,7 +18,15 @@ export default class JobAdService {
         return axios.post("http://localhost:8080/api/jobAd/create", values)
     }
 
+    getPageableAndFilterJobPostings(pageNo, pageSize, filterOption) {
+        return axios.post(`http://localhost:8080/api/jobAd/getByActiveAndFilter?pageNo=${pageNo}&pageSize=${pageSize}`, filterOption);
+    }
+
+
 
 
 
 }
+
+
+
