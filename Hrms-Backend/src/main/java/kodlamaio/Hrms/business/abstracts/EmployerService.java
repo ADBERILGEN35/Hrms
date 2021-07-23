@@ -1,14 +1,27 @@
 package kodlamaio.Hrms.business.abstracts;
 
+
+import kodlamaio.Hrms.core.utilities.results.DataResult;
 import kodlamaio.Hrms.core.utilities.results.Result;
 import kodlamaio.Hrms.entities.concretes.Employer;
+import kodlamaio.Hrms.entities.concretes.EmployerUpdate;
+import kodlamaio.Hrms.entities.dtos.EmployerForRegisterDto;
+
+import java.util.List;
 
 import java.util.List;
 
 public interface EmployerService {
-    public Result login(String email, String password);
-    public Result register(Employer employer);
+    DataResult<List<Employer>> getAll();
 
-    public List<Employer> getAll();
-    public List<String> getAllEmails();
+    DataResult<Employer> getByEmail(String email);
+
+    Result add(EmployerForRegisterDto employerDto);
+
+    DataResult<Employer> getById(int id);
+
+    Result update(EmployerUpdate employerUpdate);
+
+    Result verifyUpdate(int employerUpdateId, int staffId);
+
 }

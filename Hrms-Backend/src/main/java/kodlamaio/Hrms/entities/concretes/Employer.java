@@ -1,42 +1,38 @@
 package kodlamaio.Hrms.entities.concretes;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
-
-import kodlamaio.Hrms.entities.abstracts.Entities;
-import kodlamaio.Hrms.entities.abstracts.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@PrimaryKeyJoinColumn(name = "user_id")
-@Data
+import javax.persistence.*;
+import java.util.List;
+
 @Entity
 @Table(name = "employers")
+@Data
+@AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = false)
-public class Employer extends User implements Entities {
+@PrimaryKeyJoinColumn(name = "id")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "jobAds"})
+public class Employer extends User {
 
-    @Column(name = "company_name")
+    @Column(name = "companyname")
     private String companyName;
 
     @Column(name = "website")
-    private String website;
+    private String webSite;
+
+    @Column(name = "isactived")
+    private boolean isActive;
 
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(name = "verification_status")
-    private boolean verificationStatus;
+    @Column(name = "waiting_update")
+    private boolean waitingUpdate;
 
-    public Employer(String email, String password, String company_name, String website, String phone_number, boolean verificationStatus) {
-        super(email, password);
-        this.companyName = company_name;
-        this.website = website;
-        this.phoneNumber = phone_number;
-        this.verificationStatus = verificationStatus;
-    }
-
+    @OneToMany(mappedBy = "employer")
+    private List<JobAd> jobAds;
 }
